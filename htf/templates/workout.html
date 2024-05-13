@@ -1,0 +1,128 @@
+
+{% extends "base.html" %}
+{% block title %}workout-plans{% endblock title %}
+
+{% block head %}
+{% if not request.user.is_authenticated %}
+<div class="container" data-aos="fade-up">
+
+  <div class="section-title">
+    <p style="color:#ffc451;">Checkout our Free Workout Plans</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+      <div class="icon-box">
+        <div class="icon"><i class="fa-solid fa-left-right"></i></div>
+        <h4><a href="/login" id='link'>Push Pull Leg Split </a></h4>
+        <a href="/login" id='link'><p style="color:white;">Divides workouts into push, pull, and legs...</p></a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+      <div class="icon-box">
+        <div class="icon"><i class='fas fa-dumbbell'></i></div>
+        <h4><a href="/login" id='link' >Arnold Split</a></h4>
+        <a href="/login" id='link'><p style="color:white;">Targets major muscle groups twice per week... </p></a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+      <div class="icon-box">
+        <div class="icon"><i class="bi bi-mic"></i></div>
+        <h4><a href="/login" id='link' >Mike Mentzer Split</a></h4>
+        <a href="/login" id='link'><p style="color:white;">High-intensity, low-volume approach...</p></a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+      <div class="icon-box">
+        <div class="icon"><i class="bx bx-world"></i></div>
+        <h4><a href="/login" id='link'>Full Body Split</a></h4>
+        <a href="/login" id='link'><p style="color:white;">Divides workouts into push, pull, and legs...</p></a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="icon-box">
+        <div class="icon"><i class="bi bi-arrow-down-up"></i></div>
+        <h4><a href="/login" id='link'>Upper Lower Split</a></h4>
+        <a href="/login" id='link'><p style="color:white;">Separates upper and lower body workouts...</p></a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+      <div class="icon-box">
+        <div class="icon"><i class="fa-solid fa-hand-fist"></i></div>
+        <h4><a href="/login" id='link'>5X5 StrongLift Split</a></h4>
+        <a href="/login" id='link'><p style="color:white;">Focuses on five core compound exercises... </p></a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% else %}
+
+
+
+<div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <p style="color:#ffc451;">Checkout our Free Workout Plans</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+        <div class="icon-box">
+          <div class="icon"><i class="fa-solid fa-left-right"></i></div>
+          <h4><a href="static/assets/pdfs/ppl.pdf" >Push Pull Leg Split</a></h4>
+          <a href="static/assets/pdfs/ppl.pdf" ><p style="color:white;">Divides workouts into push, pull, and legs...</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+        <div class="icon-box">
+          <div class="icon"><i class='fas fa-dumbbell'></i></div>
+          <h4><a href="static/assets/pdfs/arnold.pdf" >Arnold Split</a></h4>
+          <a href="static/assets/pdfs/arnold.pdf" ><p style="color:white;">Targets major muscle groups twice per week... </p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+        <div class="icon-box">
+          <div class="icon"><i class="bi bi-mic"></i></div>
+          <h4><a href="static/assets/pdfs/mike.pdf" >Mike Mentzer Split</a></h4>
+          <a href="static/assets/pdfs/mike.pdf" ><p style="color:white;">High-intensity, low-volume approach...</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="icon-box">
+          <div class="icon"><i class="bx bx-world"></i></div>
+          <h4><a href="static/assets/pdfs/full.pdf">Full Body Split</a></h4>
+          <a href="static/assets/pdfs/full.pdf"><p style="color:white;">Divides workouts into push, pull, and legs...</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="icon-box">
+          <div class="icon"><i class="bi bi-arrow-down-up"></i></div>
+          <h4><a href="static/assets/pdfs/ul.pdf">Upper Lower Split</a></h4>
+          <a href="static/assets/pdfs/ul.pdf"><p style="color:white;">Separates upper and lower body workouts...</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="icon-box">
+          <div class="icon"><i class="fa-solid fa-hand-fist"></i></div>
+          <h4><a href="static/assets/pdfs/five.pdf">5X5 StrongLift Split</a></h4>
+          <a href="static/assets/pdfs/five.pdf"><p style="color:white;">Focuses on five core compound exercises... </p></a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  {% endif %}
+{% endblock head %}

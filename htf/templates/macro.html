@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Calorie calculator{% endblock title %}
+
+{% block head %} 
+    <h1>Macros Calculator</h1>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form action="/macrocalculator" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="weight" style="color:#ffc451;">Weight(kg):</label>
+                        <input type="number" class="form-control mb-2" name="weight" placeholder="Weight in kg" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="height" style="color:#ffc451;">Height(cm):</label>
+                        <input type="number" class="form-control mb-2" name="height" placeholder="Height in cm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age1" style="color:#ffc451;">Age(year):</label>
+                        <input type="number" class="form-control mb-2" name="age1" placeholder="Age" required>
+                    </div>
+                    <div class="form-check">
+                        <label style="color:#ffc451;" class="form-check-label" for="male">Male</label>
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="1" checked>
+                    </div>
+                    <div class="form-check">
+                        <label style="color:#ffc451;" class="form-check-label" for="female">Female</label>
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="0">
+                    </div>
+                    <select class="form-select" aria-label="Default select example" name="activitylevel">
+                        <option selected>Choose Activity Level</option>
+                        <option value="1">Sedentary (little or no exercise)</option>
+                        <option value="2">Lightly active (light exercise/sports 1-3 days​/week)</option>
+                        <option value="3">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                        <option value="4">Very active (hard exercise/sports 6-7 days a week)</option>
+                        <option value="5">Extra active (very hard exercise/sports & physical job or 2x training)</option>
+                    </select>
+                    <br>
+                    <div class="d-grid gap-2">
+                        <button style="background-color:#ffc451" type="submit">Calculate</button>
+                    </div>
+                </form>
+                {% if p %}
+                    <div class="text-center mt-5" style="background-color: white; border: 2px solid black; padding: 20px;">
+                        <h2 style="color:black;">Result : the amount of macro u should consume is shown below</h2>
+                        <br>
+                        <p style="color:black;">Protein : {{p}} gms</p>
+                        <p style="color:black;">Carbohydrates : {{c}} gms</p>
+                        <p style="color:black;">Fat :{{f}} gms</p>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock head %}

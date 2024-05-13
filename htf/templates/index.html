@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>How to Fit</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/assets/img/logo.png" rel="icon">
+  <link href="static/assets/img/logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Gp
+  * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+    
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      
+      <!-- Uncomment below if you prefer to use an image logo -->
+       <a href="/" class="logo me-auto me-lg-0"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>
+       <h1 class="logo me-auto me-lg-0"><a href="/"><span>HTF</span></a></h1>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="/workout">Workouts plans</a></li>
+          <li><a class="nav-link scrollto " href="/nutrition">Nutrition</a></li>
+          <li class="dropdown"><a href=""><span>Calculators</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/bmicalculator">BMI Calculator</a></li>
+              <li><a href="/caloriecalculator">Calorie Calculator</a></li>
+              <li><a href="/macrocalculator">Macros Calculator</a></li>
+            </ul>
+          </li>
+          {% if not request.user.is_authenticated %}
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          {% else %}
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a href="/profile" class="nav-link scrollto">View Profile</a></li>
+          {% endif %}
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      {% if not request.user.is_authenticated %}
+      <a href="/signup" class="get-started-btn scrollto">Login/Signup</a>
+      {% else %}
+      
+      <a href="/logout" class="get-started-btn scrollto">Logout</a>
+
+
+
+      {% endif %}
+
+
+      
+    </div>
+  </header><!-- End Header -->
+  
+    
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center">
+    
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-xl-6 col-lg-8">
+            
+          <h1>Welcome to How to Fit <span>(HTF)</span></h1>
+          <h2>Unlock Your Journey to Health and Fitness</h2>
+        </div>
+      </div>
+
+      <div class="row gy-4 mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <a href="/nutrition"><i class="bi bi-journal-check"></i></a>
+            <h3><a href="/nutrition">Nutrition</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <a href="/workout"><i class="bi bi-card-checklist"></i></a>
+            <h3><a href="/workout">Workout Plans</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <a href="/bmicalculator"><i class="bi bi-calculator"></i></a>
+            <h3><a href="/bmicalculator">Bmi Calculator</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <a href="/caloriecalculator"><i class="bi bi-calculator-fill"></i></a>
+            <h3><a href="/caloriecalculator">Calories Calculator</a></h3>
+          </div>
+        </div>
+        <div class="col-xl-2 col-md-4">
+          <div class="icon-box">
+            <a href="/macrocalculator"><i class="bi bi-calculator"></i></a>
+            <h3><a href="/macrocalculator">Macros Calculator</a></h3>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="static/assets/img/logo.png" class="img-fluid" alt="">
+            <img src="static/assets/img/health.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+            <h3>Who We Are</h3>
+            <p class="fst-italic">
+                At HTF, we're more than just a website - we're a community dedicated to making a positive impact on people's lives. Founded by fitness enthusiasts with a passion for helping others, our platform is built on the principles of inclusivity, support, and empowerment.
+            </p>
+            <h3>Our Story</h3>
+            
+            <p class="fst-italic">
+                HTF began as a humble idea shared between friends who shared a common goal: to make health and fitness accessible to everyone, regardless of their background or fitness level. What started as a small initiative has since grown into a thriving online resource, reaching thousands of individuals around the world.
+            </p>
+
+            <h3>Our Values</h3>
+            <ul style="list-style-type:square">
+                <li><i class="ri-check-double-line"></i><b>Authenticity:</b> <p>We believe in being genuine and transparent in everything we do. Our content is based on science-backed research and real-life experiences, ensuring that you receive accurate information you can trust.</p></li>
+                <li><i class="ri-check-double-line"></i><b>Empowerment:</b> <p>We empower our community members to take control of their health and fitness journey. Through education and support, we give you the tools you need to make informed decisions and achieve lasting results.</p></li>
+                <li><i class="ri-check-double-line"></i><b>Inclusivity: </b><p>Health and fitness are for everyone, regardless of age, gender, or fitness level. We celebrate diversity and strive to create a welcoming environment where everyone feels valued and supported.</p></li>
+                <li><i class="ri-check-double-line"></i><b>Continuous Improvement:</b> <p>We're committed to continuous improvement and innovation. We're always exploring new ways to enhance our platform and better serve our community.</p></li>
+            </ul>
+            
+            <p class="fst-italic">
+                HTF began as a humble idea shared between friends who shared a common goal: to make health and fitness accessible to everyone, regardless of their background or fitness level. What started as a small initiative has since grown into a thriving online resource, reaching thousands of individuals around the world.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <hr style="height:5px;border:none; background-color:#ffc451;">
+
+    <!-- End About Section -->
+
+    <!-- ======= Clients Section ======= -->
+    
+    
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Contact Us</p>
+        </div>
+
+        
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>htfhowtofit@gmail.com</p>
+              </div>
+
+              
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+            {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong></strong> {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% if not request.user.is_authenticated %}
+    <form action="/" method="post" role="form" class="php-email-form">{% csrf_token %}
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="col-md-6 form-group mt-3 mt-md-0">
+          <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+      </div>
+      <div class="form-group mt-3">
+        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+      </div>
+      <div class="my-3">
+        <div class="loading">Loading</div>
+        <div class="error-message"></div>
+        <div class="sent-message">Your message has been sent. Thank you!</div>
+      <div class="text-center"><button type="submit" >Send Message</button></div>
+    </form>
+{% else %}
+    
+
+            <form action="/" method="post" role="form" class="php-email-form">{% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" value='{{user}}' readonly required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" value='{{user.email}}'  readonly required >
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="text-center"><button type="submit" >Send Message</button></div>
+            </form>
+            {% endif %}
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+    
+    <!-- End Contact Section -->
+    
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-info">
+              <h3><span>HTF</span>.</h3>
+              <p>
+                <strong>Email:</strong> htfhowtofit@gmail.com<br>
+              </p>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/nutrition">Nutrition</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/workout">Workout Plans</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/#contact">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="/bmicalculator">Bmi Calculator</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/caloriecalculator">Calories Calculator</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/macrocalculator">Macros Calculator</a></li>
+
+            </ul>
+          </div>
+
+          
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
+  <!-- Include this script at the end of your HTML body -->
+  
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Calorie calculator{% endblock title %}
+
+{% block head %} 
+    <h1>User Profile</h1>
+    
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <img src="static/assets/img/profile.jpg" style='border-radius: 50%;' width='250' height='250' alt="">
+                <br>
+                <br>
+                <br>
+                <br>
+
+                {% for p in post %}
+                <strong style='color:white;'>User Name :  </strong style='color:white;'><span style='color:#ffc451;'>{{p.username}}</span>
+                <br>
+                <br>
+                <strong style='color:white;'>First Name :  </strong style='color:white;'><span style='color:#ffc451;'>{{p.first_name}}</span>
+                    <br>
+                    <br>
+                    <strong style='color:white;'>Last Name :  </strong style='color:white;'><span style='color:#ffc451;'>{{p.last_name}}</span>
+                        <br>
+                        <br>
+                <strong style='color:white;'>Email address :  </strong style='color:white;'><span style='color:#ffc451;'>{{p.email}}</span>
+                <br>
+
+            {% endfor %}
+
+                
+                
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock head %}

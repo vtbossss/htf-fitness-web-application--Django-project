@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block title %}bmicalculator{% endblock title %}
+{% block style %}<link rel="stylesheet" href="static/assets/css/style2.css">{% endblock style %}
+
+{% block head %} 
+    <h1>Bmi Calculator</h1>
+    <div style='color:white;'>Please choose the measurement system below:</div>
+
+    <div class="container justify-content-center">
+        <div class="form-row justify-content-center">
+            <!-#########################Col1###############-->
+            <div class="col-md-4 col-sm-12 col-xs-12" style='background-color:#ffc451;'>
+                <div class="tab-bmi" style='background-color:#ffc451;'>
+                    <div class="tab" style='background-color:#ffc451;'> 
+                        <button class="tablinks" onclick="openUnit(event, 'metric')" style='border-color:black;'>Metric</button>
+                        <button class="tablinks" onclick="openUnit(event, 'imperial')" style='border-color:black;'>Imperial</button>
+                    </div>
+
+                    <div class="tabcontent" id="metric" >
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="col-12">
+                                <label for="" style='color:#ffc451;'>Weight: </label>
+                                <input type="text" name="weight-metric" class="form-control" required placeholder="kg">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="" style='color:#ffc451;'>Height: </label>
+                                <input type="text" name="height-metric" class="form-control" required placeholder="m">
+                            </div>
+                            {% if request.user.is_authenticated %}
+                            <div class="form-check my-5">
+                                <input class="form-check-input" checked="checked" name="save" value="on" type="checkbox">
+                                <label for="" style='color:black;' class="form-check-label">Save It.</label>
+                            </div>
+                            {% else %}
+                            <div class="form-check my-5">
+                                <input disabled class="form-check-input" checked="checked" name="save" value="on" type="checkbox">
+                                <label for="" class="form-check-label" style='color:black;'>Please Login to Save data to your profile</label>
+                            </div>
+                            {% endif %}
+
+                            <button style='color:#ffc451;' type="submit" class="btn btn-primary" action="/bmicalculator">Calculate</button>
+
+                        </form>
+                    </div>
+
+                    <div class="tabcontent" id="imperial">
+                        <form method="post">{% csrf_token %}
+
+                            <div class="col-12">
+                                <label for="" style='color:#ffc451;'>Weight: </label>
+                                <input type="text" name="weight-imperial" class="form-control" required placeholder="lbs">
+                            </div>
+
+                            <div class="col-12">
+                                <label for="" style='color:#ffc451;'>Height: </label>
+                                <div class="input-group">
+                                    <input type="text" name="feet" placeholder="feet" class="form-control">
+                                    <input type="text" name="inches" placeholder="inches" class="form-control">
+                                </div>
+                            </div>
+
+                            {% if request.user.is_authenticated %}
+                            <div class="form-check my-5">
+                                <input class="form-check-input" checked="checked" name="save" value="on" type="checkbox">
+                                <label for="" class="form-check-label" style='color:black;'>Save It.</label>
+                            </div>
+                            {% else %}
+                            <div class="form-check my-5">
+                                <input disabled class="form-check-input" checked="checked" name="save" value="on" type="checkbox">
+                                <label for="" class="form-check-label" style='color:black;'>Please Login to save the data to your profile</label>
+                            </div>
+                            {% endif %}
+
+                            <button style='color:#ffc451;' type="submit" class="btn btn-primary" action="/bmicalculator">Calculate</button>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-#########################Col2###############-->
+
+            {% if bmi %}
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <h2 style='color:#ffc451;'>Result</h2>
+                <p style='color:#ffc451;'>Your BMI = {{bmi}} kg/m² | {{state}}</p>
+                <div class="progress">
+                    <div class="progress-bar bg-danger" style="width:25%">Underweight</div>
+                    <div class="progress-bar bg-success" style="width:25%">Normal</div>
+                    <div class="progress-bar bg-warning" style="width:25%">Overweight</div>
+                    <div class="progress-bar bg-danger" style="width:25%">Obesity</div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+    </div>
+{% endblock head %}
+
