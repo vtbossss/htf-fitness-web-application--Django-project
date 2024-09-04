@@ -43,8 +43,8 @@ def signup(request):
         
         
         try:
-            if(User.objects.get(phone=phone)):
-                messages.warning(request,"Phone number is already taken")
+            if(User.objects.get(username=phone)):
+                messages.warning(request,"username is already taken")
                 return redirect('/signup')
         except Exception as identifier:
             pass
@@ -68,8 +68,6 @@ def signup(request):
 
 
 def dologin(request):
-    if not request.user.is_authenticated:
-        messages.info(request,"Please Login to Continue")
     if(request.method=="POST"):
         phone=request.POST.get("usernumber")
         pass1=request.POST.get("pass1")
@@ -94,18 +92,14 @@ def bcalc(request):
         return redirect('/login')
     if(request.method=='POST'):
 
-        weight_metric=request.POST.get('weight-metric')
-        weight_imperial=request.POST.get('weight-imperial')
-        if weight_metric:
-            weight=float(request.POST.get('weight-metric'))
-            height=float(request.POST.get('height-metric'))
-        elif weight_imperial:
-            weight=round(float(request.POST.get('weight-imperial'))/2.205)
-            height=round((float(request.POST.get('feet'))*30.48+float(request.POST.get("inches"))*2.54)/100)
-        bmi=(weight/(height**2))
+        weight1=float(request.POST.get('weight'))
+        height1=float(request.POST.get('height'))
+        height1=height1/100
+        bmi=(weight1/(height1**2))
         ssave=request.POST.get('save')
         if(ssave=='on'):
-            Bmi.objects.create(user=request.user,weight=weight,height=height,bmi=round(bmi))
+            Bmi.objects.create(user=request.user,weight=weight1,height=height1,bmi=round(bmi))
+        
         if bmi < 16:
             state = "Severe Thinness"
         elif bmi > 16 and bmi < 17:
@@ -127,7 +121,7 @@ def bcalc(request):
         context["state"] = state
     
             
-    return render(request,'bmi.html',context)
+    return render(request,'bmi1.html',context)
 def ccalc(request):
 
     context={}

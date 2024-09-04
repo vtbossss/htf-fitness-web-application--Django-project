@@ -3,12 +3,15 @@
 <html lang="en">
 
 <head>
+    <script src="https://kit.fontawesome.com/9175dd8746.js" crossorigin="anonymous"></script>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>How to Fit</title>
+  <title>How to Fit{% block title%}{% endblock title%}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+
 
   <!-- Favicons -->
   <link href="static/assets/img/logo.png" rel="icon">
@@ -29,6 +32,8 @@
   <!-- Template Main CSS File -->
   <link href="static/assets/css/style.css" rel="stylesheet">
 
+  {% block style %}{% endblock style %}
+
   <!-- =======================================================
   * Template Name: Gp
   * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
@@ -39,14 +44,28 @@
 </head>
 
 <body>
-    
+
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
+      {% for message in messages %}
+      {% if "We will get back to you soon" in message.message %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong></strong> {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% elif "Login Successful" in message.message %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+      <strong></strong> {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% endfor %}
+
     <div class="container d-flex align-items-center justify-content-lg-between">
 
-      
-      <!-- Uncomment below if you prefer to use an image logo -->
+
+   
        <a href="/" class="logo me-auto me-lg-0"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>
        <h1 class="logo me-auto me-lg-0"><a href="/"><span>HTF</span></a></h1>
 
@@ -75,7 +94,7 @@
       {% if not request.user.is_authenticated %}
       <a href="/signup" class="get-started-btn scrollto">Login/Signup</a>
       {% else %}
-      
+
       <a href="/logout" class="get-started-btn scrollto">Logout</a>
 
 
@@ -83,20 +102,20 @@
       {% endif %}
 
 
-      
+
     </div>
   </header><!-- End Header -->
-  
-    
+
+
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center justify-content-center">
-    
+
     <div class="container" data-aos="fade-up">
 
       <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
         <div class="col-xl-6 col-lg-8">
-            
+
           <h1>Welcome to How to Fit <span>(HTF)</span></h1>
           <h2>Unlock Your Journey to Health and Fitness</h2>
         </div>
@@ -139,7 +158,7 @@
   </section><!-- End Hero -->
 
   <main id="main">
-    
+
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
@@ -156,7 +175,7 @@
                 At HTF, we're more than just a website - we're a community dedicated to making a positive impact on people's lives. Founded by fitness enthusiasts with a passion for helping others, our platform is built on the principles of inclusivity, support, and empowerment.
             </p>
             <h3>Our Story</h3>
-            
+
             <p class="fst-italic">
                 HTF began as a humble idea shared between friends who shared a common goal: to make health and fitness accessible to everyone, regardless of their background or fitness level. What started as a small initiative has since grown into a thriving online resource, reaching thousands of individuals around the world.
             </p>
@@ -168,7 +187,7 @@
                 <li><i class="ri-check-double-line"></i><b>Inclusivity: </b><p>Health and fitness are for everyone, regardless of age, gender, or fitness level. We celebrate diversity and strive to create a welcoming environment where everyone feels valued and supported.</p></li>
                 <li><i class="ri-check-double-line"></i><b>Continuous Improvement:</b> <p>We're committed to continuous improvement and innovation. We're always exploring new ways to enhance our platform and better serve our community.</p></li>
             </ul>
-            
+
             <p class="fst-italic">
                 HTF began as a humble idea shared between friends who shared a common goal: to make health and fitness accessible to everyone, regardless of their background or fitness level. What started as a small initiative has since grown into a thriving online resource, reaching thousands of individuals around the world.
             </p>
@@ -182,8 +201,8 @@
     <!-- End About Section -->
 
     <!-- ======= Clients Section ======= -->
-    
-    
+
+
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
@@ -193,13 +212,13 @@
           <p>Contact Us</p>
         </div>
 
-        
+
 
         <div class="row mt-5">
 
           <div class="col-lg-4">
             <div class="info">
-              
+
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
@@ -207,19 +226,14 @@
                 <p>htfhowtofit@gmail.com</p>
               </div>
 
-              
+
 
             </div>
 
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-            {% for message in messages %}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-      <strong></strong> {{message}}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
+
     {% if not request.user.is_authenticated %}
     <form action="/" method="post" role="form" class="php-email-form">{% csrf_token %}
       <div class="row">
@@ -243,15 +257,15 @@
       <div class="text-center"><button type="submit" >Send Message</button></div>
     </form>
 {% else %}
-    
+
 
             <form action="/" method="post" role="form" class="php-email-form">{% csrf_token %}
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" value='{{user}}' readonly required>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" value='{{user}}'  required>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" value='{{user.email}}'  readonly required >
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" value='{{user.email}}'  required >
                 </div>
               </div>
               <div class="form-group mt-3">
@@ -274,9 +288,9 @@
 
       </div>
     </section>
-    
+
     <!-- End Contact Section -->
-    
+
 
   </main><!-- End #main -->
 
@@ -292,7 +306,7 @@
               <p>
                 <strong>Email:</strong> htfhowtofit@gmail.com<br>
               </p>
-              
+
             </div>
           </div>
 
@@ -317,7 +331,7 @@
             </ul>
           </div>
 
-          
+
 
         </div>
       </div>
@@ -350,7 +364,8 @@
   <!-- Template Main JS File -->
   <script src="static/assets/js/main.js"></script>
   <!-- Include this script at the end of your HTML body -->
-  
+
+
 
 </body>
 
